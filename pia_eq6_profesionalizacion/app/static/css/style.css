@@ -18,7 +18,7 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:15px 40px;
+  padding:15px 100px;
   background:linear-gradient(to right,#0a2a5e,#0d3c8f);
   color:white;
 }
@@ -80,6 +80,11 @@ body{
   border:none;
   padding:10px 20px;
   border-radius:5px;
+}
+
+.btn-main:hover{
+  background:#ff8c00;
+  transform: scale(1.05);
 }
 
 /* SECCIONES */
@@ -325,12 +330,102 @@ form button:hover {
   font-size: 1.2em;
 }
 
-
 /* FAQ */
-details{
-  margin:10px auto;
-  width:60%;
-  background:white;
-  padding:10px;
-  border-radius:5px;
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.faq details {
+  background: orange;
+  border-radius: 16px;
+  border: 2px solid #d69900;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgb(235, 187, 90);
+  transition: background-color 0.3s ease;
+}
+
+.faq details:hover {
+  background-color: #ff8c00;
+}
+
+.faq details[open] {
+  background-color: #ffdd9f;
+}
+
+.faq summary {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #000000;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq p {
+  margin-top: 0.5rem;
+  color: black;
+  line-height: 1.5;
+}
+
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal button {
+  background: orange;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 350px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
 }
