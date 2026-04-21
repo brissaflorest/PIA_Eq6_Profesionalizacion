@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conexión Total MX</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="logo">Conexión Total MX</div>
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="btn-nav">Solicitar Cotización</button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="overlay">
+    <h1>Conectamos tu mundo digital</h1>
+    <p>Expertos en instalación y optimización de redes</p>
+    <button class="btn-main">Solicitar Servicio</button>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="servicios">
+  <h2>Nuestros Servicios</h2>
+  <div class="grid">
+ 
+    <div class="card">
+        <div class="card-inner">
+            <!-- Frente -->
+            <div class="card-front" style="background-image:url('{% static 'img/Wifi.png' %}');">
+                <h3>Instalación de WiFi</h3>
+                <p>Redes rápidas y seguras</p>
+                <button>Detalles</button>
+            </div>
+            <!-- Reverso -->
+            <div class="card-back">
+                <h3>Detalles del Servicio</h3>
+                <p>
+                    Servicio de instalación de redes inalámbricas seguras y rápidas,
+                    incluye diagnóstico del espacio, selección de equipos adecuados, 
+                    configuración avanzada y pruebas de rendimiento.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-inner">
+            <!-- Frente -->
+            <div class="card-front" style="background-image:url('{% static 'img/Router.png' %}');">
+                <h3>Configuración de Routers</h3>
+                <p>Optimización avanzada</p>
+                <button>Detalles</button>
+            </div>
+            <!-- Reverso -->
+            <div class="card-back">
+                <h3>Detalles del Servicio</h3>
+                <p>
+                    Configuración avanzada de routers para empresas, con seguridad 
+                    perimetral, segmentación de red (VLANs) y optimización de tráfico.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-inner">
+            <!-- Frente -->
+            <div class="card-front" style="background-image:url('{% static 'img/Cableado.png' %}');">
+                <h3>Cableado Estructurado</h3>
+                <p>Instalación profesional</p>
+                <button>Detalles</button>
+            </div>
+            <!-- Reverso -->
+            <div class="card-back">
+                <h3>Detalles del Servicio</h3>
+                <p>
+                    Instalación profesional de cableado de red (Cat6/Cat7), racks, 
+                    patch panels y etiquetado. Incluye pruebas de certificación y 
+                    documentación del diseño.
+                </p>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PLANES -->
+<section id="planes" class="planes">
+  <h2>Nuestros Planes</h2>
+
+  <div class="grid">
+    <div class="plan">
+      <h3>Plan Básico</h3>
+      <p class="precio">$99 USD</p>
+      <p>Instalación WiFi</p>
+      <button>Elegir Plan</button>
+    </div>
+
+    <div class="plan destacado">
+      <h3>Plan Pro</h3>
+      <p class="precio">$179 USD</p>
+      <p>WiFi + Configuración</p>
+      <button>Elegir Plan</button>
+    </div>
+
+    <div class="plan">
+      <h3>Plan Avanzado</h3>
+      <p class="precio">$199 USD</p>
+      <p>Instalación completa</p>
+      <button>Elegir Plan</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos" class="proyectos">
+  <h2>Nuestros Proyectos</h2>
+
+  <div class="grid">
+    <div class="proyecto">Casa</div>
+    <div class="proyecto">Oficina</div>
+    <div class="proyecto">Empresa</div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contacto">
+  <h2>Contáctanos</h2>
+
+  <div class="contacto-grid">
+    <form>
+      <input type="text" placeholder="Nombre Completo">
+      <input type="email" placeholder="Correo Electrónico">
+      <textarea placeholder="Mensaje"></textarea>
+      <button>Enviar Mensaje</button>
+    </form>
+
+    <div class="info">
+      <p>📞 +52 81 1234 5678</p>
+      <p>📧 info@conexiontotalmx.com</p>
+      <p>📍 Monterrey, N.L.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2>Preguntas Frecuentes</h2>
+
+  <details>
+    <summary>¿Cuánto cuesta?</summary>
+    <p>Depende del servicio.</p>
+  </details>
+
+  <details>
+    <summary>¿Atienden a domicilio?</summary>
+    <p>Sí.</p>
+  </details>
+</section>
+
+</body>
+</html>
