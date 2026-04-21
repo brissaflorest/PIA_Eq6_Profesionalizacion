@@ -141,7 +141,7 @@ h2{
   padding: 10px;
   width: 100%;
   border-radius: 0 0 10px 10px;
-  color: white;
+  color: black;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
@@ -237,28 +237,94 @@ h2{
 }
 
 /* CONTACTO */
-.contact-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+.contacto {
+  background: linear-gradient(to right, #0a2a5e, #0d3c8f);
+  color: white;
+  padding: 60px 80px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  width: 92%;
+  margin: 0 auto;
 }
 
-form{
-  display:flex;
-  flex-direction:column;
+.contacto h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: orange;
 }
 
-input, textarea{
-  margin:10px 0;
-  padding:10px;
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
-.info{
-  background:#0a2a5e;
-  color:white;
-  padding:20px;
-  border-radius:10px;
+/* FORMULARIO */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
+
+input, textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1em;
+  transition: box-shadow 0.3s;
+}
+
+input:focus, textarea:focus {
+  box-shadow: 0 0 10px #ffd700;
+}
+
+textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+form button {
+  background: orange;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+form button:hover {
+  background: #ffb700;
+  transform: scale(1.05);
+}
+
+/* INFO */
+.info {
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.info p {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0a2a5e;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.info p::before {
+  font-size: 1.2em;
+}
+
 
 /* FAQ */
 details{
