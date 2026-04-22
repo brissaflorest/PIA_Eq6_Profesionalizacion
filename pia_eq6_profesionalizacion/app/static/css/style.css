@@ -232,15 +232,150 @@ h2{
 }
 
 /* PROYECTOS */
-.proyecto{
-  height:150px;
+.proyecto-card{
+  height:200px;
   background:#dcdcdc;
   display:flex;
   align-items:center;
   justify-content:center;
   border-radius:10px;
+
 }
 
+/* PROYECTOS botpn */
+.proyecto-card button {
+  color:#000000;
+  cursor: pointer;
+  background: orange;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+
+}
+
+.proyecto-card button:hover {
+  background: #ff8c00;
+  padding: 14px 28px; ;
+}
+
+/* comparador*/
+#proyectoModal .comparador {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+
+.img-antes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover; /* usa contain si quieres evitar recortes */
+  z-index: 1;
+}
+
+.img-despues-container {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 2;
+  transition: width 0.05s ease-out;
+}
+
+.img-despues {
+ width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Etiquetas para antes/después */
+.comparador::after {
+  content: "DESPUES";
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: bold;
+  z-index: 3;
+}
+
+.comparador::before {
+  content: "ANTES";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: bold;
+  z-index: 3;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #0a2a5e 0%, #1e90ff 50%, #ff8c00 100%);
+  outline: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 15px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border: 3px solid #1e90ff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #1e90ff;
+  border-color: white;
+}
+
+.slider::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border: 3px solid #1e90ff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  background: #1e90ff;
+  border-color: white;
+}
 /* CONTACTO */
 .contacto {
   background: linear-gradient(to right, #0a2a5e, #0d3c8f);
@@ -395,7 +530,7 @@ form button:hover {
   padding: 30px;
   border-radius: 10px;
   text-align: center;
-  max-width: 400px;
+  max-width: 700px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
@@ -413,15 +548,6 @@ form button:hover {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-}
-
-.modal-content {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  text-align: center;
-  max-width: 350px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 .close {
