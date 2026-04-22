@@ -135,24 +135,18 @@
           <div class="overlay">
             <h3>CASA</h3>
             <h4>Red WiFi residencial</h4>
-
-            <button onclick="abrirModal('casa')">Ver Proyecto</button>
           </div>
         </div>
         <div class="proyecto-card" style="background-image:url('{% static 'img/wifi_oficina.jpg' %}');">
           <div class="overlay">
             <h3>OFICINA</h3>
             <h4>Red WiFi para oficinas</h4>
-
-            <button onclick="abrirModal('oficina')">Ver Proyecto</button>
           </div>
         </div>
         <div class="proyecto-card" style="background-image:url('{% static 'img/wifi-empresa.jfif' %}');">
           <div class="overlay">
             <h3>EMPRESA</h3>
             <h4>Red WiFi para empresas</h4>
-            
-            <button onclick="abrirModal('empresa')">Ver Proyecto</button>
           </div>
         </div>
       </div>
@@ -212,21 +206,6 @@
       </div>
     </div>
     
-     <!-- Modal de proyecto -->
-    <div id="proyectoModal" class="modal">
-      <div class="modal-content" style="max-width:600px;">
-        <span class="close" onclick="cerrarModal()">&times;</span>
-        <h2 id="proyectoTitulo"></h2>
-        <div class="comparador">
-          <img id="imgAntes" class="img-antes" alt="Antes">
-          <div class="img-despues-container" style="width: 50%;">
-            <img id="imgDespues" class="img-despues" alt="Después">
-          </div>
-          <input type="range" min="0" max="100" value="50" class="slider" id="slider">
-        </div>
-      </div>
-    </div>
-
     <script>
       const cotizacionModal = document.getElementById('cotizacionModal');
       const cotizacionTexto = document.getElementById('cotizacionTexto');
@@ -286,44 +265,7 @@
         }
       });
     </script>
-    <script>
-      // Script para abrir modal de proyecto con imágenes antes/después
-      function abrirModal(tipo) {
-        const modal = document.getElementById('proyectoModal');
-        const titulo = document.getElementById('proyectoTitulo');
-        const antes = document.getElementById('imgAntes');
-        const despues = document.getElementById('imgDespues');
-
-        if (tipo === 'casa') {
-          titulo.textContent = 'Proyecto Casa';
-          antes.src = '{% static "img/sin wifi_casa.webp" %}';
-          despues.src = '{% static "img/wifi-casa.jpg" %}';
-        } else if (tipo === 'oficina') {
-          titulo.textContent = 'Proyecto Oficina';
-          antes.src = '{% static "img/oficina_no_wifi.jpg" %}';
-          despues.src = '{% static "img/wifi_oficina.jpg" %}';
-        } else if (tipo === 'empresa') {
-          titulo.textContent = 'Proyecto Empresa';
-          antes.src = '{% static "img/empresa_no_wifi.png" %}';
-          despues.src = '{% static "img/wifi-empresa.jfif" %}';
-        }
-        modal.style.display = 'flex';
-      }
-
-      function cerrarModal() {
-        document.getElementById('proyectoModal').style.display = 'none';
-      }
-
-      // Funcionalidad del slider antes/después
-      const slider = document.getElementById('slider');
-      const despuesContainer = document.querySelector('.img-despues-container');
-      
-      if (slider && despuesContainer) {
-        slider.addEventListener('input', (e) => {
-          despuesContainer.style.width = e.target.value + '%';
-        });
-      }
-    </script>
+  
 
   </body>
 </html>
