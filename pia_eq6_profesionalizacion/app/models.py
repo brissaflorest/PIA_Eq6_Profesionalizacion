@@ -20,5 +20,3 @@ class Venta(models.Model):
 class DetalleVenta(models.Model):
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE)
     servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE)
-    cantidad = models.IntegerField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2)  
