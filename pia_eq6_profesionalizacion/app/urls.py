@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
-    path('', views.servicio_list, name='servicio_list'), 
+    path('', views.servicio_list, name='inicio'),
+    path('registrar-venta/', views.registrar_venta, name='registrar_venta'),
 ]

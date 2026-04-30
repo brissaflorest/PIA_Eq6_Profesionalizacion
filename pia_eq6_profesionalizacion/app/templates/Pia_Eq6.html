@@ -202,68 +202,130 @@
         <span class="close">&times;</span>
         <h2>Cotización</h2>
         <p id="cotizacionTexto"></p><br>
+        <input type="text" id="nombreCliente" placeholder="Tu nombre completo" required 
+              style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:6px; font-size:1rem;">
         <button id="confirmarBtn">Confirmar</button>
       </div>
     </div>
-    
+
+    <!-- MODAL DE TICKET -->
+    <div id="ticketModal" class="modal">
+      <div class="modal-content ticket-receipt">
+        <span class="close" id="ticketClose">&times;</span>
+        
+        <div class="receipt-header">
+          <h2>Conexión Total MX</h2>
+          <p>Monterrey, N.L.</p>
+          <p>Tel. +52 81 1234 5678</p>
+          <div class="receipt-divider">* * * * * * * * * * * * * * *</div>
+          <p><strong>TICKET DE VENTA</strong></p>
+          <div class="receipt-divider">* * * * * * * * * * * * * * *</div>
+        </div>
+
+        <div class="receipt-body">
+          <div class="receipt-row">
+            <span>Folio:</span>
+            <span>#<span id="ticketFolio"></span></span>
+          </div>
+          <div class="receipt-row">
+            <span>Cliente:</span>
+            <span id="ticketCliente"></span>
+          </div>
+          <div class="receipt-row">
+            <span>Fecha:</span>
+            <span id="ticketFecha"></span>
+          </div>
+          <div class="receipt-divider">* * * * * * * * * * * * * * *</div>
+          <div class="receipt-row">
+            <span><strong>Descripción</strong></span>
+            <span><strong>Precio</strong></span>
+          </div>
+          <div class="receipt-divider">* * * * * * * * * * * * * * *</div>
+          <div class="receipt-row">
+            <span id="ticketPlan"></span>
+            <span>$<span id="ticketTotal"></span> mxn</span>
+          </div>
+          <div class="receipt-divider">* * * * * * * * * * * * * * *</div>
+          <div class="receipt-row total-row">
+            <span><strong>TOTAL</strong></span>
+            <span><strong>$<span id="ticketTotalFinal"></span> mxn</strong></span>
+          </div>
+        </div>
+
+        <div class="receipt-footer">
+          <div class="receipt-divider">* * * * * * * * * * * * * * *</div>
+          <p>¡GRACIAS POR TU COMPRA!</p>
+          <div class="barcode">||| || ||| || || ||| || |||</div>
+        </div>
+
+        <button id="ticketCerrarBtn">Cerrar</button>
+      </div>
+    </div>
+        
     <script>
-      const cotizacionModal = document.getElementById('cotizacionModal');
-      const cotizacionTexto = document.getElementById('cotizacionTexto');
-      const cotizacionClose = document.querySelector('#cotizacionModal .close');
-      const confirmarBtn = document.getElementById('confirmarBtn');
+        const cotizacionModal = document.getElementById('cotizacionModal');
+        const cotizacionTexto = document.getElementById('cotizacionTexto');
+        const cotizacionClose = document.querySelector('#cotizacionModal .close');
+        const confirmarBtn = document.getElementById('confirmarBtn');
+        const ticketModal = document.getElementById('ticketModal');
+        const ticketClose = document.getElementById('ticketClose');
+        const ticketCerrarBtn = document.getElementById('ticketCerrarBtn');
 
-      // Abrir modal al elegir plan
-      document.querySelectorAll('.plan button').forEach(btn => {
-        btn.addEventListener('click', e => {
-          const plan = e.target.closest('.plan');
-          const nombre = plan.querySelector('h3').textContent;
-          const precio = plan.querySelector('.precio').textContent;
-          const detalle = plan.querySelector('p:nth-of-type(2)').textContent;
+        let planSeleccionado = {};
 
-          cotizacionTexto.textContent = `Has elegido el ${nombre} (${detalle}) con un costo de ${precio}.`;
-          cotizacionModal.style.display = 'flex';
+        document.querySelectorAll('.plan button').forEach(btn => {
+          btn.addEventListener('click', e => {
+            const plan = e.target.closest('.plan');
+            const nombre = plan.querySelector('h3').textContent;
+            const precio = plan.querySelector('.precio').textContent.replace('$', '').replace(' mxn', '').trim();
+            const detalle = plan.querySelector('p:nth-of-type(2)').textContent;
+
+            planSeleccionado = { nombre, precio, detalle };
+            cotizacionTexto.textContent = `Has elegido el ${nombre} (${detalle}) con un costo de $${precio} mxn.`;
+            document.getElementById('nombreCliente').value = '';
+            cotizacionModal.style.display = 'flex';
+          });
         });
-      });
 
-      // Cerrar modal con la X
-      cotizacionClose.addEventListener('click', () => {
-        cotizacionModal.style.display = 'none';
-      });
-
-      // Cerrar modal al confirmar
-      confirmarBtn.addEventListener('click', () => {
-        alert('Tu cotización ha sido enviada correctamente ✓');
-        cotizacionModal.style.display = 'none';
-      });
-
-      // Cerrar si se hace clic fuera
-      window.addEventListener('click', e => {
-        if (e.target === cotizacionModal) {
+        cotizacionClose.addEventListener('click', () => {
           cotizacionModal.style.display = 'none';
-        }
-      });
-    </script>
+        });
 
-    <script>
-      const contactForm = document.getElementById('contactForm');
-      const formModal = document.getElementById('formModal');
-      const formClose = document.querySelector('#formModal .close');
+        confirmarBtn.addEventListener('click', () => {
+          const nombre = document.getElementById('nombreCliente').value.trim();
+          if (!nombre) {
+            alert('Por favor ingresa tu nombre.');
+            return;
+          }
 
-      contactForm.addEventListener('submit', e => {
-        e.preventDefault(); // evita recargar la página
-        formModal.style.display = 'flex'; // muestra el modal
-      });
+          fetch('/registrar-venta/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': '{{ csrf_token }}' },
+            body: JSON.stringify({
+              nombre: nombre,
+              plan: planSeleccionado.nombre,
+              precio: planSeleccionado.precio,
+            })
+          })
+          .then(res => res.json())
+          .then(data => {
+            cotizacionModal.style.display = 'none';
+            document.getElementById('ticketFolio').textContent = data.folio;
+            document.getElementById('ticketCliente').textContent = data.cliente;
+            document.getElementById('ticketPlan').textContent = data.plan;
+            document.getElementById('ticketTotal').textContent = data.total;
+            document.getElementById('ticketFecha').textContent = data.fecha;
+            document.getElementById('ticketTotalFinal').textContent = data.total; 
+            ticketModal.style.display = 'flex';
+          });
+        });
 
-      formClose.addEventListener('click', () => {
-        formModal.style.display = 'none';
-      });
-
-      // cerrar si se hace clic fuera
-      window.addEventListener('click', e => {
-        if (e.target === formModal) {
-          formModal.style.display = 'none';
-        }
-      });
+        ticketClose.addEventListener('click', () => ticketModal.style.display = 'none');
+        ticketCerrarBtn.addEventListener('click', () => ticketModal.style.display = 'none');
+        window.addEventListener('click', e => {
+          if (e.target === cotizacionModal) cotizacionModal.style.display = 'none';
+          if (e.target === ticketModal) ticketModal.style.display = 'none';
+        });
     </script>
   
 

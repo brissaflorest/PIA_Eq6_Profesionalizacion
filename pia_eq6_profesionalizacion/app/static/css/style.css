@@ -423,3 +423,75 @@ form button:hover {
   font-size: 22px;
   cursor: pointer;
 }
+.ticket-receipt {
+  font-family: 'Courier New', monospace;
+  max-width: 340px;
+  background: #fff;
+  color: #222;
+  padding: 30px 25px;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.receipt-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.receipt-header h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.receipt-header p {
+  font-size: 0.85rem;
+  margin: 2px 0;
+}
+
+.receipt-divider {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin: 8px 0;
+  letter-spacing: 1px;
+}
+
+.receipt-body {
+  margin: 10px 0;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  margin: 5px 0;
+}
+
+.total-row {
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.receipt-footer {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.barcode {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  margin-top: 8px;
+  color: #333;
+}
+
+.ticket-receipt button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background: #f0a500;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}

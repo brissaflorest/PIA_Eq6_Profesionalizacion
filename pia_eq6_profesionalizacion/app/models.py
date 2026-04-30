@@ -20,3 +20,6 @@ class Venta(models.Model):
 class DetalleVenta(models.Model):
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE)
     servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE)
+    
+    def __str__(self): 
+        return f"{self.venta.cliente.nombre} - {self.servicio.nombre}"
