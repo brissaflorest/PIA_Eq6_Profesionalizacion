@@ -327,6 +327,28 @@
           if (e.target === ticketModal) ticketModal.style.display = 'none';
         });
     </script>
+
+     <script>
+      const contactForm = document.getElementById('contactForm');
+      const formModal = document.getElementById('formModal');
+      const formClose = document.querySelector('#formModal .close');
+
+      contactForm.addEventListener('submit', e => {
+        e.preventDefault(); // evita recargar la página
+        formModal.style.display = 'flex'; // muestra el modal
+      });
+
+      formClose.addEventListener('click', () => {
+        formModal.style.display = 'none';
+      });
+
+      // cerrar si se hace clic fuera
+      window.addEventListener('click', e => {
+        if (e.target === formModal) {
+          formModal.style.display = 'none';
+        }
+      });
+    </script>
   
 
   </body>
