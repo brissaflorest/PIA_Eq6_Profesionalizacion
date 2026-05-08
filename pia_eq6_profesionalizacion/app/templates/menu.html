@@ -1,0 +1,24 @@
+{% load static %} <!-- Cargar el documento de mi web-->
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Principal</title>
+    <link rel="stylesheet" href="{% static 'css/styleMenu.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="navbar-nav">
+                <ul>                                              
+                    <li><a class="nav-var">Bienvenido</a></li>                  
+                    <li><a class="nav-link" href="{% url 'inicio' %}">Salir</a></li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

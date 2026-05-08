@@ -19,7 +19,11 @@
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
-      <button class="btn-nav" onclick="location.href='#planes'">Solicitar Cotización</button>
+      <div class="nav-buttons">
+          <button class="btn-nav" onclick="location.href='#planes'">Solicitar Cotización</button>
+          <a href="{% url 'listado_ventas' %}"><button class="btn-nav">Admin</button></a>
+      </div>
+      
     </header>
 
     <!-- HERO -->

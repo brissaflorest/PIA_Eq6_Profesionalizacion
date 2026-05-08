@@ -1,0 +1,142 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #dbdfe4, #0a2a5e);
+    padding: 2rem;
+    color: #0f0101;
+    margin-left: 250px;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #0f0e00;
+    margin-bottom: 1rem;
+}
+
+.boton-nuevo {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #cfc7a0;
+    color: rgb(71, 53, 28);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.boton-nuevo:hover {
+    background-color: linear-gradient(to bottom,#ffd700,#ffb700);
+}
+
+.tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.tabla-productos th,
+.tabla-productos td {
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+.tabla-productos th {
+    background-color: #0a2a5e;
+    color: #f9fffe;
+    font-weight: bold;
+}
+
+.boton-editar,
+.boton-eliminar {
+    margin-right: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.boton-editar {
+    background-color: #ffeb3b;
+    color: #333;
+}
+
+.boton-editar:hover {
+    background-color: #fdd835;
+}
+
+.boton-eliminar {
+    background-color: #e57373;
+    color: white;
+}
+
+.boton-eliminar:hover {
+    background-color: #d32f2f;
+}
+
+.text-muted {
+    color: #777;
+}
+
+.boton-listo {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.estatus-listo {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.navbar {
+  background-color: #c4b585;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  width: fit-content;
+  margin: 10px auto;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+}
+
+/* Enlaces del menú */
+.navbar-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #ccb68e;
+}
+
+.nav-var {
+  color: #8b7b5d;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Enlace deshabilitado */
+.nav-link.disabled {
+  color: #000000;
+  cursor: not-allowed;
+}

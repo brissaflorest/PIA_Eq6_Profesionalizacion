@@ -33,10 +33,6 @@ def registrar_venta(request):
             'fecha': venta.fecha.strftime('%d/%m/%Y %H:%M'),
         })
 # Create your views here.
-def servicio_list(request):
-    servicios = Servicio.objects.all()
-    return render(request, 'Pia_Eq6.html', {'servicios': servicios})
-
 def registrar_venta(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -62,3 +58,8 @@ def registrar_venta(request):
             'total': str(venta.total),
             'fecha': venta.fecha.strftime('%d/%m/%Y %H:%M'),
         })
+    
+
+def listado_ventas(request):
+    ventas = Venta.objects.all()  
+    return render(request, 'listado_ventas.html', {'ventas': ventas})

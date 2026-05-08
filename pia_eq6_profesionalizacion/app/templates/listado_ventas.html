@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Ventas</title>
+    <link rel="stylesheet" href="{% static 'css/stylelistar.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/confirmar.js' %}"></script>
+</head>
+    
+<body>
+    {% include 'menu.html' %}
+    <h1>Listado de ventas</h1>
+
+
+    <table class="tabla-productos">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Total</th>
+                <th>Fecha y Hora</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for venta in ventas %}
+            <tr>
+
+                <td>
+                    {{ venta.cliente.nombre }}
+                </td>
+
+                <td>
+                    {% for detalle in venta.detalleventa_set.all %}
+                        {{ detalle.servicio.nombre }}
+                    {% endfor %}
+                </td>
+
+                <td>
+                    ${{ venta.total }}
+                </td>
+
+                <td>
+                    {{ venta.fecha }}
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    
+    </table>
+</body>
+</html>
