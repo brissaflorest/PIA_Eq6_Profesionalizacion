@@ -209,6 +209,7 @@
         <input type="text" id="nombreCliente" placeholder="Tu nombre completo" required 
               style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:6px; font-size:1rem;">
         <button id="confirmarBtn">Confirmar</button>
+
       </div>
     </div>
 
@@ -247,14 +248,20 @@
           <div class="receipt-divider">* * * * * * * * * * * * * * *</div>
           <div class="receipt-row">
             <span id="ticketPlan"></span>
-            <span>$<span id="ticketTotal"></span> mxn</span>
+            <span>$<span id="ticketSubtotal"></span> mxn</span>
           </div>
+
+          <div class="receipt-row">
+            <span>IVA (16%)</span>
+            <span>$<span id="ticketIVA"></span> mxn</span>
+          </div>
+
           <div class="receipt-divider">* * * * * * * * * * * * * * *</div>
+
           <div class="receipt-row total-row">
             <span><strong>TOTAL</strong></span>
             <span><strong>$<span id="ticketTotalFinal"></span> mxn</strong></span>
           </div>
-        </div>
 
         <div class="receipt-footer">
           <div class="receipt-divider">* * * * * * * * * * * * * * *</div>
@@ -263,6 +270,9 @@
         </div>
 
         <button id="ticketCerrarBtn">Cerrar</button>
+        <button id="descargarFacturaBtn">
+          Descargar Factura
+        </button>
       </div>
     </div>
         
@@ -313,15 +323,16 @@
           })
           .then(res => res.json())
           .then(data => {
-            cotizacionModal.style.display = 'none';
-            document.getElementById('ticketFolio').textContent = data.folio;
-            document.getElementById('ticketCliente').textContent = data.cliente;
-            document.getElementById('ticketPlan').textContent = data.plan;
-            document.getElementById('ticketTotal').textContent = data.total;
-            document.getElementById('ticketFecha').textContent = data.fecha;
-            document.getElementById('ticketTotalFinal').textContent = data.total; 
-            ticketModal.style.display = 'flex';
-          });
+              cotizacionModal.style.display = 'none';
+              document.getElementById('ticketFolio').textContent = data.folio;
+              document.getElementById('ticketCliente').textContent = data.cliente;
+              document.getElementById('ticketFecha').textContent = data.fecha;   // ← agregado
+              document.getElementById('ticketPlan').textContent = data.plan;
+              document.getElementById('ticketSubtotal').textContent = data.subtotal;
+              document.getElementById('ticketIVA').textContent = data.iva;
+              document.getElementById('ticketTotalFinal').textContent = data.total; // ← solo este
+              ticketModal.style.display = 'flex';
+            });
         });
 
         ticketClose.addEventListener('click', () => ticketModal.style.display = 'none');
@@ -352,6 +363,15 @@
           formModal.style.display = 'none';
         }
       });
+      // descargar factura
+      document.getElementById('descargarFacturaBtn').addEventListener('click', () => {
+    const cliente = document.getElementById('ticketCliente').textContent;
+    const plan = document.getElementById('ticketPlan').textContent;
+    const subtotal = document.getElementById('ticketSubtotal').textContent; // ← id correcto
+
+    const url = `/generar-factura/?nombre=${encodeURIComponent(cliente)}&plan=${encodeURIComponent(plan)}&precio=${encodeURIComponent(subtotal)}`;
+    window.open(url, '_blank');
+    });
     </script>
   
 
